@@ -18,6 +18,7 @@ This file tracks progress, active decisions, architectural context, and next ste
   - Set up dual-agent memory strategy (`AGENTS.md` and `MEMORY.md`) to allow seamless context sharing between Antigravity (Gemini Flash) and external LLMs (Codex, Cursor, etc.).
   - Set project working name to **Avul ASPM**.
   - **Avul Design System Applied**: Extracted official brand tokens from `avul.com.br` (`#06141B`, `#0A1C25`, `#12313F`, `#1F6F7A`, `#6CC3CF`, `#E0525F`, Geist typography, official SVG logos), re-skinned the frontend, verified production build, and tested locally.
+  - **Pushed to GitHub**: Initial Avul branding commit `0389554` pushed to `main` at `diegoteste93/avul-aspm`.
 
 ---
 
