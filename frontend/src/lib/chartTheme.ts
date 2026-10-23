@@ -6,15 +6,17 @@ export function useChartTheme() {
 
   return {
     tooltipStyle: {
-      backgroundColor: isDark ? '#1f2937' : '#ffffff',
-      border: `1px solid ${isDark ? '#374151' : '#e2e8f0'}`,
+      backgroundColor: isDark ? '#0A1C25' : '#ffffff',
+      border: `1px solid ${isDark ? '#1C4452' : '#E1E6EF'}`,
       borderRadius: '8px',
-      color: isDark ? '#f3f4f6' : '#334155',
+      color: isDark ? '#E8ECF5' : '#0B1120',
+      boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+      fontFamily: 'Geist, sans-serif',
     },
-    gridStroke: isDark ? '#374151' : '#e2e8f0',
-    axisStroke: isDark ? '#6b7280' : '#94a3b8',
-    textColor: isDark ? '#9ca3af' : '#64748b',
-    cardBg: isDark ? '#111827' : '#ffffff',
+    gridStroke: isDark ? '#12313F' : '#E1E6EF',
+    axisStroke: isDark ? '#1C4452' : '#94A3B8',
+    textColor: isDark ? '#98A3BA' : '#566075',
+    cardBg: isDark ? '#0A1C25' : '#ffffff',
     isDark,
   }
 }

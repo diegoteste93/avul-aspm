@@ -33,7 +33,7 @@ export default function SettingsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-content-primary">Settings</h1>
-        <p className="text-content-muted mt-1">Configure your FoxNode platform</p>
+        <p className="text-content-muted mt-1">Configure your Avul ASPM platform</p>
       </div>
 
       {/* Tabs */}

@@ -4,57 +4,60 @@
 
 @layer base {
   :root {
-    --color-foxnode: #0c8ee9;
-    --color-critical: #dc2626;
-    --color-high: #ea580c;
-    --color-medium: #d97706;
-    --color-low: #2563eb;
-    --color-info: #6b7280;
+    --color-foxnode: #1F6F7A;
+    --color-avul: #1F6F7A;
+    --color-avul-soft: #6CC3CF;
+    --color-critical: #E0525F;
+    --color-high: #F5A524;
+    --color-medium: #6CC3CF;
+    --color-low: #2BC46A;
+    --color-info: #98A3BA;
 
-    /* Theme: Light mode (default) */
-    --surface-primary: 248 250 252;
-    --surface-secondary: 255 255 255;
-    --surface-tertiary: 241 245 249;
+    /* Theme: Light mode (Avul Brand Paper & Petrol) */
+    --surface-primary: 244 246 250;      /* Avul --paper #F4F6FA */
+    --surface-secondary: 255 255 255;    /* Clean white */
+    --surface-tertiary: 228 240 242;     /* Avul --blue-tint #E4F0F2 */
     --surface-elevated: 255 255 255;
 
-    --text-primary: 15 23 42;
-    --text-secondary: 51 65 85;
-    --text-tertiary: 100 116 139;
-    --text-muted: 148 163 184;
+    --text-primary: 11 17 32;            /* Avul --text #0B1120 */
+    --text-secondary: 18 49 63;          /* Avul --petrol #12313F */
+    --text-tertiary: 86 96 117;          /* Avul --muted #566075 */
+    --text-muted: 136 147 167;
 
-    --border-primary: 226 232 240;
-    --border-secondary: 203 213 225;
+    --border-primary: 225 230 239;       /* Avul --line #E1E6EF */
+    --border-secondary: 201 209 214;
 
     --chart-bg: #ffffff;
-    --chart-border: #e2e8f0;
-    --chart-text: #334155;
-    --chart-grid: #e2e8f0;
-    --chart-axis: #94a3b8;
+    --chart-border: #E1E6EF;
+    --chart-text: #0B1120;
+    --chart-grid: #E1E6EF;
+    --chart-axis: #566075;
   }
 
   .dark {
-    --surface-primary: 2 6 23;
-    --surface-secondary: 17 24 39;
-    --surface-tertiary: 31 41 55;
-    --surface-elevated: 17 24 39;
+    /* Theme: Dark mode (Avul Signature Deep Ink & Petrol Palette) */
+    --surface-primary: 6 20 27;          /* Avul --ink-950 #06141B */
+    --surface-secondary: 10 28 37;       /* Avul --ink-900 #0A1C25 */
+    --surface-tertiary: 18 49 63;        /* Avul --ink-800 #12313F */
+    --surface-elevated: 10 28 37;
 
-    --text-primary: 255 255 255;
-    --text-secondary: 229 231 235;
-    --text-tertiary: 156 163 175;
-    --text-muted: 107 114 128;
+    --text-primary: 232 236 245;         /* Avul --on-dark #E8ECF5 */
+    --text-secondary: 186 198 210;       /* Avul lead text #BAC6D2 */
+    --text-tertiary: 152 163 186;        /* Avul --on-dark-muted #98A3BA */
+    --text-muted: 104 118 144;
 
-    --border-primary: 31 41 55;
-    --border-secondary: 55 65 81;
+    --border-primary: 18 49 63;          /* Avul --ink-800 #12313F */
+    --border-secondary: 28 68 82;        /* Avul --ink-700 #1C4452 */
 
-    --chart-bg: #1f2937;
-    --chart-border: #374151;
-    --chart-text: #f3f4f6;
-    --chart-grid: #374151;
-    --chart-axis: #6b7280;
+    --chart-bg: #0A1C25;
+    --chart-border: #12313F;
+    --chart-text: #E8ECF5;
+    --chart-grid: #12313F;
+    --chart-axis: #98A3BA;
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased font-sans;
   }
 
   ::-webkit-scrollbar {
@@ -78,19 +81,23 @@
 
 @layer components {
   .card {
-    @apply bg-surface-elevated border border-border rounded-xl p-6;
+    @apply bg-surface-elevated border border-border rounded-xl p-6 transition-all;
   }
 
   .card-hover {
-    @apply card transition-all duration-200 hover:border-border-secondary hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/20;
+    @apply card duration-200 hover:border-border-secondary hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/40;
   }
 
   .btn-primary {
-    @apply bg-foxnode-600 hover:bg-foxnode-500 text-white font-medium px-4 py-2 rounded-lg transition-colors;
+    @apply bg-avul-500 hover:bg-avul-600 text-white font-medium px-4 py-2 rounded-lg transition-all shadow-sm active:scale-[0.99];
   }
 
   .btn-secondary {
     @apply bg-surface-tertiary hover:bg-border-secondary text-content-secondary font-medium px-4 py-2 rounded-lg border border-border-secondary transition-colors;
+  }
+
+  .btn-ghost {
+    @apply text-content-tertiary hover:text-content-primary hover:bg-surface-tertiary font-medium px-3 py-2 rounded-lg transition-colors;
   }
 
   .btn-danger {
@@ -98,11 +105,11 @@
   }
 
   .input {
-    @apply bg-surface-tertiary border border-border-secondary rounded-lg px-3 py-2 text-content-primary placeholder-content-muted focus:outline-none focus:ring-2 focus:ring-foxnode-500 focus:border-transparent transition-all;
+    @apply bg-surface-tertiary border border-border-secondary rounded-lg px-3 py-2 text-content-primary placeholder-content-muted focus:outline-none focus:ring-2 focus:ring-avul-400 focus:border-transparent transition-all;
   }
 
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded text-xs font-mono font-medium tracking-wide uppercase;
   }
 
   .badge-critical {
@@ -110,18 +117,18 @@
   }
 
   .badge-high {
-    @apply badge bg-orange-500/15 text-orange-400 border border-orange-500/30;
+    @apply badge bg-amber-500/15 text-amber-400 border border-amber-500/30;
   }
 
   .badge-medium {
-    @apply badge bg-yellow-500/15 text-yellow-400 border border-yellow-500/30;
+    @apply badge bg-cyan-500/15 text-cyan-300 border border-cyan-500/30;
   }
 
   .badge-low {
-    @apply badge bg-blue-500/15 text-blue-400 border border-blue-500/30;
+    @apply badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/30;
   }
 
   .badge-info {
-    @apply badge bg-gray-500/15 text-gray-400 border border-gray-500/30;
+    @apply badge bg-slate-500/15 text-slate-300 border border-slate-500/30;
   }
 }

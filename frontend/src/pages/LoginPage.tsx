@@ -16,7 +16,7 @@ export default function LoginPage() {
 
   const handleDemoLogin = () => {
     demoLogin()
-    toast.success('Welcome to FoxNode Demo!')
+    toast.success('Bem-vindo ao Avul ASPM Demo!')
     navigate('/')
   }
 
@@ -26,43 +26,65 @@ export default function LoginPage() {
     try {
       if (isRegister) {
         await register({ ...form, role: 'analyst' })
-        toast.success('Account created! Please sign in.')
+        toast.success('Conta criada com sucesso! Faça login.')
         setIsRegister(false)
       } else {
         await login(form.username, form.password)
         navigate('/')
       }
     } catch (err: any) {
-      toast.error(err.response?.data?.detail || 'Something went wrong')
+      toast.error(err.response?.data?.detail || 'Erro ao realizar login')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="min-h-screen bg-surface-primary flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-surface-primary relative overflow-hidden flex items-center justify-center p-4">
+      {/* Avul subtle cyber aura */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 60% 45% at 50% 15%, rgba(31, 111, 122, 0.18), transparent 70%)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="w-full max-w-md relative z-10">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
           <img
             src={theme === 'dark' ? '/logo-dark.svg' : '/logo-light.svg'}
-            alt="FoxNode"
-            className="h-12 mb-3"
+            alt="Avul ASPM"
+            className="h-11 mb-2 transition-opacity"
           />
-          <p className="text-content-muted mt-1">Application Security Posture Management</p>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-avul-300 animate-pulse" />
+            <p className="text-content-tertiary text-xs tracking-wider uppercase font-mono">
+              Application Security Posture Management
+            </p>
+          </div>
         </div>
 
-        {/* Form */}
-        <div className="card">
-          <h2 className="text-xl font-semibold text-content-primary mb-6">
-            {isRegister ? 'Create Account' : 'Sign In'}
-          </h2>
+        {/* Form Card */}
+        <div className="card shadow-xl shadow-black/15">
+          <div className="mb-6">
+            <span className="font-mono text-xs text-avul-300 uppercase tracking-widest font-medium">
+              Autenticação
+            </span>
+            <h2 className="text-xl font-bold text-content-primary mt-1">
+              {isRegister ? 'Criar Conta' : 'Acessar Plataforma'}
+            </h2>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {isRegister && (
               <>
                 <div>
-                  <label className="block text-sm font-medium text-content-tertiary mb-1">Full Name</label>
+                  <label className="block text-xs font-mono text-content-tertiary uppercase mb-1">
+                    Nome Completo
+                  </label>
                   <input
                     type="text"
                     className="input w-full"
@@ -71,7 +93,9 @@ export default function LoginPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-content-tertiary mb-1">Email</label>
+                  <label className="block text-xs font-mono text-content-tertiary uppercase mb-1">
+                    E-mail Corporativo
+                  </label>
                   <input
                     type="email"
                     className="input w-full"
@@ -84,7 +108,9 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label className="block text-sm font-medium text-content-tertiary mb-1">Username</label>
+              <label className="block text-xs font-mono text-content-tertiary uppercase mb-1">
+                Usuário
+              </label>
               <input
                 type="text"
                 className="input w-full"
@@ -95,7 +121,9 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-content-tertiary mb-1">Password</label>
+              <label className="block text-xs font-mono text-content-tertiary uppercase mb-1">
+                Senha
+              </label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -117,18 +145,18 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary w-full py-2.5 disabled:opacity-50"
+              className="btn-primary w-full py-2.5 mt-2 disabled:opacity-50 text-sm font-semibold tracking-wide uppercase font-mono"
             >
-              {loading ? 'Please wait...' : isRegister ? 'Create Account' : 'Sign In'}
+              {loading ? 'Processando...' : isRegister ? 'Cadastrar' : 'Entrar'}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <button
               onClick={() => setIsRegister(!isRegister)}
-              className="text-sm text-foxnode-400 hover:text-foxnode-300 transition-colors"
+              className="text-xs text-avul-300 hover:text-avul-200 transition-colors font-medium"
             >
-              {isRegister ? 'Already have an account? Sign in' : "Don't have an account? Register"}
+              {isRegister ? 'Já possui uma conta? Entrar' : 'Não tem conta? Cadastre-se'}
             </button>
           </div>
         </div>
@@ -137,13 +165,13 @@ export default function LoginPage() {
         <div className="mt-4">
           <button
             onClick={handleDemoLogin}
-            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition-colors"
+            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-surface-secondary hover:bg-surface-tertiary text-avul-300 border border-avul-500/40 font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
           >
-            <Play className="w-4 h-4" />
-            Try Live Demo
+            <Play className="w-4 h-4 fill-current" />
+            Explorar Modo Demo
           </button>
-          <p className="text-center text-xs text-content-muted mt-2">
-            No account needed — explore all features with sample data
+          <p className="text-center text-xs text-content-muted mt-2 font-mono">
+            Ambiente de demonstração imediato com dados de exemplo
           </p>
         </div>
       </div>
